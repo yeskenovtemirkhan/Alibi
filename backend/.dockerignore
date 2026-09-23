@@ -1,0 +1,8 @@
+.venv
+.pgdata
+.env
+.pytest_cache
+__pycache__
+**/__pycache__
+tests
+artifacts/dataset.csv.gz

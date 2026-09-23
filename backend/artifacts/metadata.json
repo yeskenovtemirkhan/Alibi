@@ -1,0 +1,100 @@
+{
+  "model_name": "alibi-lgbm",
+  "model_version": "1.0.0",
+  "trained_at": "2026-09-23T16:04:33+00:00",
+  "features": [
+    "amount",
+    "amount_ratio",
+    "new_country",
+    "new_device",
+    "vpn",
+    "merchant_seen",
+    "velocity_1h",
+    "hours_since_prev",
+    "travel_speed_kmh"
+  ],
+  "threshold": 0.543448,
+  "best_iteration": 96,
+  "params": {
+    "objective": "binary",
+    "learning_rate": 0.05,
+    "num_leaves": 31,
+    "min_data_in_leaf": 40,
+    "feature_fraction": 0.9,
+    "bagging_fraction": 0.9,
+    "bagging_freq": 1,
+    "lambda_l2": 1.0,
+    "seed": 42,
+    "deterministic": true,
+    "force_row_wise": true,
+    "verbose": -1
+  },
+  "dataset": {
+    "generator": "app.ml.dataset.generate",
+    "seed": 42,
+    "rows": 112181,
+    "customers": 3000,
+    "fraud_rate": 0.01155,
+    "scenarios": {
+      "normal": 106096,
+      "travel": 3451,
+      "velocity": 796,
+      "legit_burst": 793,
+      "large_purchase": 434,
+      "ato": 245,
+      "vpn_new_device": 165,
+      "new_device": 111,
+      "impossible_travel": 65,
+      "quiet": 25
+    },
+    "split": {
+      "train": 78028,
+      "validation": 17135,
+      "test": 17018,
+      "by": "customer"
+    }
+  },
+  "metrics": {
+    "validation": {
+      "precision": 0.9516,
+      "recall": 0.8719,
+      "fpr": 0.00053,
+      "pr_auc": 0.9395,
+      "roc_auc": 0.9909,
+      "confusion": {
+        "tp": 177,
+        "fp": 9,
+        "tn": 16923,
+        "fn": 26
+      },
+      "rows": 17135,
+      "fraud_rows": 203
+    },
+    "test": {
+      "precision": 0.9519,
+      "recall": 0.8436,
+      "fpr": 0.00054,
+      "pr_auc": 0.9315,
+      "roc_auc": 0.9896,
+      "confusion": {
+        "tp": 178,
+        "fp": 9,
+        "tn": 16798,
+        "fn": 33
+      },
+      "rows": 17018,
+      "fraud_rows": 211
+    }
+  },
+  "feature_importance_gain": {
+    "hours_since_prev": 20794.1,
+    "velocity_1h": 19693.0,
+    "amount": 18452.0,
+    "vpn": 8908.4,
+    "new_device": 8610.9,
+    "amount_ratio": 5242.3,
+    "travel_speed_kmh": 1385.9,
+    "new_country": 1201.3,
+    "merchant_seen": 420.4
+  }
+}
